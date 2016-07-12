@@ -1,6 +1,7 @@
+'use strict';
 var selectElementsStartingWithA = function(array) {
     var result = [];
-    for (i=0; i < array.length; i++)  {  
+    for (var i=0; i < array.length; i++)  {  
         if (array[i].charAt(0) == "a") {
             result.push(array[i]);
         };
@@ -45,7 +46,7 @@ var reverseWordsInArray = function(array) {
     for (var i=0; i < array.length; i++) {
         var normal = array[i].split("");
         var inverse = [];
-        for (inverseIncr = normal.length - 1 ; inverseIncr > -1; inverseIncr--) {
+        for (var inverseIncr = normal.length - 1 ; inverseIncr > -1; inverseIncr--) {
             inverse.push(normal[inverseIncr]);
         };
         var show = inverse.join("");;
@@ -55,19 +56,37 @@ var reverseWordsInArray = function(array) {
 }
 
 var everyPossiblePair = function(array) {
-    return 'Write your method here';
+    var result = [];
+    var pair = [array[array.length-1]];
+    for (var i=0; i < array.length; i++) {
+        pair.push(array[i]);
+        pair.sort();
+        result.push(pair);
+        pair = [array[i]];
+    }
+    result.sort();
+    return result;
 }
 
 var allElementsExceptFirstThree = function(array) {
-    return 'Write your method here';
+    var result = array.slice(3)
+    return result;
 }
 
 var addElementToBeginning = function(array, element) {
-    return 'Write your method here';
+    array.unshift(1);
+    var result = array;
+    return result;
 }
 
 var sortByLastLetter = function(array) {
-    return 'Write your method here';
+    var result = [];
+    for ( var i=0; i < array.length; i++) {
+        var test = array[i].charAt(array[i].length-1);
+        
+    }
+    
+    return result;
 }
 
 var getFirstHalf = function(string) {
