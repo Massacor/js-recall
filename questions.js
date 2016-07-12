@@ -1,21 +1,57 @@
 var selectElementsStartingWithA = function(array) {
-    return 'Write your method here';
-}
+    var result = [];
+    for (i=0; i < array.length; i++)  {  
+        if (array[i].charAt(0) == "a") {
+            result.push(array[i]);
+        };
+    };
+    return result
+};
 
 var selectElementsStartingWithVowel = function(array) {
-    return 'Write your method here';
+    var vowel = ["a", "i", "e", "o", "u", "y"];
+    var result = [];
+    for (var i=0; i < array.length; i++) {
+        var test = array[i].charAt(0);
+        for (var vowelI=0; vowelI < vowel.length; vowelI++) {
+            if (vowel[vowelI] == test){
+                result.push(array[i]);
+            }
+        }
+    };
+    return result;
 }
 
 var removeNullElements = function(array) {
-    return 'Write your method here';
+    var result = [];
+    for (var i=0; i < array.length; i++) {
+        if (array[i] != null)
+        result.push(array[i]);
+    }
+    return result;
 }
 
 var removeNullAndFalseElements = function(array) {
-    return 'Write your method here';
+   var result = [];
+    for (var i=0; i < array.length; i++) {
+        if (array[i] != null && typeof array[i] != "boolean")
+        result.push(array[i]);
+    }
+    return result;
 }
 
 var reverseWordsInArray = function(array) {
-    return 'Write your method here';
+    var result = [];
+    for (var i=0; i < array.length; i++) {
+        var normal = array[i].split("");
+        var inverse = [];
+        for (inverseIncr = normal.length - 1 ; inverseIncr > -1; inverseIncr--) {
+            inverse.push(normal[inverseIncr]);
+        };
+        var show = inverse.join("");;
+        result.push(show);
+    }
+    return result;
 }
 
 var everyPossiblePair = function(array) {
