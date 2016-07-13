@@ -197,7 +197,7 @@ var getAllLetters = function(array) {
     
     var letters = array.toString().split("").sort();
     var test="";
-    // la surppression sur un tableau en train d'être balayer est une très mauvaise idée, il vaut mieux push sur un tableau parralléle et afficher celui là.
+    // La surppression sur un tableau en train d'être balayer est une très mauvaise idée, il vaut mieux push sur un tableau parralléle et afficher celui là.
     for (var i = 0; i < letters.length; i++) {
         if (letters[i] != "," && test != letters[i]) {
             result.push(letters[i])
@@ -208,22 +208,54 @@ var getAllLetters = function(array) {
 }
 
 var swapKeysAndValues = function(object) {
-    result = {};
     
-    
+    var tabKeys = Object.keys(object);
+    var tabValues = [];
+    var tabMain = [];
+    var result = {};
+    for (var i=0; i < tabKeys.length; i++) {
+        tabValues.push(object[tabKeys[i]]);
+    }
+    for (var i=0; i < tabKeys.length; i++) {
+        tabMain.push(tabValues[i]);
+        tabMain.push(tabKeys[i]);
+    }
+    for (var i=0; i < tabMain.length; i++) {
+        if (i%2 ==0) {
+           result[tabMain[i]] = tabMain[i+1]; 
+        }  
+    }
     return result;
 }
 
 var sumKeysAndValues = function(object) {
-    return 'Write your method here';
+    var tabKeys = Object.keys(object);
+    var tabValues = [];
+    var tabMain = [];
+    var result = 0;
+    for (var i=0; i < tabKeys.length; i++) {
+        tabValues.push(object[tabKeys[i]]);
+    }
+    console.log (tabKeys)
+    for (var i=0; i < tabKeys.length; i++) {
+        tabMain.push(tabKeys[i]);
+        tabMain.push(tabValues[i]);
+    }
+    for (var i=0; i < tabMain.length; i++) {
+        result += Number(tabMain[i]);
+    }
+    return result;
 }
 
 var removeCapitals = function(string) {
-    return 'Write your method here';
+    result="";
+    
+    return result;
 }
 
 var roundUp = function(number) {
-    return 'Write your method here';
+    var result = Math.ceil(number)
+    return result;
 }
 
 var formatDateNicely = function(date) {
@@ -231,7 +263,8 @@ var formatDateNicely = function(date) {
 }
 
 var getDomainName = function(string) {
-    return 'Write your method here';
+    var result = string.slice(string.indexOf("@")+1, string.indexOf("."));
+    return result;
 }
 
 var titleize = function(string) {
