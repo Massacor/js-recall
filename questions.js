@@ -65,7 +65,7 @@ var everyPossiblePair = function(array) {
         pair = [array[i]];
     }
     result.sort();
-    return result;
+    return array;
 }
 
 var allElementsExceptFirstThree = function(array) {
@@ -81,64 +81,137 @@ var addElementToBeginning = function(array, element) {
 
 var sortByLastLetter = function(array) {
     var result = [];
-    for ( var i=0; i < array.length; i++) {
-        var test = array[i].charAt(array[i].length-1);
-        
+    for (var i=0; i < array.length; i++) {
+        result.push(array[i].split("").reverse().join(""))
+    };
+    result.sort();
+    array = result; //On retourne le résultat dans le tableau et on repart.
+    result = [];
+    for (var i=0; i < array.length; i++) {
+        result.push(array[i].split("").reverse().join(""))
+    }
+    return result;
+}
+
+var getFirstHalf = function(string) {
+    var result = "";
+    var half = Math.ceil(string.length/2);
+    var result = string.slice(0,half);
+    return result;
+}
+
+var makeNegative = function(number) {
+    if (number > 0) {
+        number = number*-1;
+    }
+    
+    return number;
+}
+
+var numberOfPalindromes = function(array) {
+    var result=0;
+    var test="";
+    for (var i=0; i < array.length; i++) {
+        test = array[i].split("").reverse().join("");
+        if (test == array[i]) {
+            result +=1;
+        }
     }
     
     return result;
 }
 
-var getFirstHalf = function(string) {
-    return 'Write your method here';
-}
-
-var makeNegative = function(number) {
-    return 'Write your method here';
-}
-
-var numberOfPalindromes = function(array) {
-    return 'Write your method here';
-}
-
 var shortestWord = function(array) {
-    return 'Write your method here';
+    var result=array[0];
+    for (var i=0; i < array.length; i++) {
+        if (result.length > array[i].length)
+            result = array [i];
+    }
+    return result;
 }
 
 var longestWord = function(array) {
-    return 'Write your method here';
+    var result=array[0];
+    for (var i=0; i < array.length; i++) {
+        if (result.length < array[i].length)
+            result = array [i];
+    }
+    return result;
 }
 
 var sumNumbers = function(array) {
-    return 'Write your method here';
+    var result=0;
+    for (var i=0; i < array.length; i++) {
+        result += array[i];
+    }
+    return result;
 }
 
 var repeatElements = function(array) {
-    return 'Write your method here';
+    var longueur = array.length;
+    var result = [];
+    var result = array;
+    for (var i=0; i < longueur; i++) {
+        result.push(array[i]);
+    };
+    return result;
 }
 
 var stringToNumber = function(string) {
-    return 'Write your method here';
+    var result = Number(string);
+    return result;
 }
 
 var calculateAverage = function(array) {
-    return 'Write your method here';
+    var result =0;
+    for (var i =0; i < array.length; i++) {
+        result += array[i];
+    }
+    result /= array.length;
+    return result;
 }
 
 var getElementsUntilGreaterThanFive = function(array) {
-    return 'Write your method here';
+    var result = [];
+    for (var i=0; i < array.length; i++) {
+        if (array[i]<=5) {
+            result.push(array[i]);
+        } else {
+            return result;
+        }
+    };
 }
 
 var convertArrayToObject = function(array) {
-    return 'Write your method here';
+    var result = {};
+    for (var i = 0; i < array.length; i++) {
+        if (i%2 == 0) {
+            result[array[i]] = array[i+1];
+        }
+    }
+    return result;
 }
 
 var getAllLetters = function(array) {
-    return 'Write your method here';
+    var result = [];
+    
+    var letters = array.toString().split("").sort();
+    var test="";
+    // la surppression sur un tableau en train d'être balayer est une très mauvaise idée, il vaut mieux push sur un tableau parralléle et afficher celui là.
+    for (var i = 0; i < letters.length; i++) {
+        if (letters[i] != "," && test != letters[i]) {
+            result.push(letters[i])
+        }
+        test=letters[i]
+    }
+    return result;
 }
 
 var swapKeysAndValues = function(object) {
-    return 'Write your method here';
+    result = {};
+    
+    
+    return result;
 }
 
 var sumKeysAndValues = function(object) {
