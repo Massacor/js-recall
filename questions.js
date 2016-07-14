@@ -236,7 +236,6 @@ var sumKeysAndValues = function(object) {
     for (var i=0; i < tabKeys.length; i++) {
         tabValues.push(object[tabKeys[i]]);
     }
-    console.log (tabKeys)
     for (var i=0; i < tabKeys.length; i++) {
         tabMain.push(tabKeys[i]);
         tabMain.push(tabValues[i]);
@@ -248,8 +247,14 @@ var sumKeysAndValues = function(object) {
 }
 
 var removeCapitals = function(string) {
-    result="";
-    
+    var result=[];
+    var tabMain = string.split("");
+    for (var i=0; i < tabMain.length; i++) {
+        if (tabMain[i].charCodeAt(0) >= 90 || tabMain[i].charCodeAt(0) <= 65 || tabMain[i].charCodeAt(0) == 32) {
+            result.push(tabMain[i]);
+        }
+    }
+    result = result.join("")
     return result;
 }
 
@@ -259,7 +264,11 @@ var roundUp = function(number) {
 }
 
 var formatDateNicely = function(date) {
-    return 'Write your method here';
+    var month = date.getMonth(date);
+    var day = date.getDate(date);
+    if (day < 10)
+    var result = day + "/"+ month + "/" + date.getFullYear(date);
+    return result;
 }
 
 var getDomainName = function(string) {
