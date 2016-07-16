@@ -264,24 +264,61 @@ var roundUp = function(number) {
 }
 
 var formatDateNicely = function(date) {
-    var month = date.getMonth(date);
+    var month = date.getMonth(date)+1;
+    if (month <10 ) {
+        month = "0" + month;
+    }
     var day = date.getDate(date);
-    if (day < 10)
+    if (day <10 ) {
+        day = "0" + day;
+    }
     var result = day + "/"+ month + "/" + date.getFullYear(date);
     return result;
 }
 
 var getDomainName = function(string) {
-    var result = string.slice(string.indexOf("@")+1, string.indexOf("."));
+    var result = string.slice(string.indexOf("@")+1).split(".")
+    result.pop()
+    result=result.join(".");
     return result;
 }
 
 var titleize = function(string) {
-    return 'Write your method here';
+    var tabCapitalize = [];
+    var result = [];
+    var previousWord = "";
+    tabCapitalize = string.split(" ");
+    for (var i = 0; i < tabCapitalize.length; i++) {
+        if (tabCapitalize[i] == tabCapitalize[0] || previousWord.charAt(previousWord.length-1) == "."  ){
+            result.push(tabCapitalize[i].charAt(0).toUpperCase())
+        } else if (tabCapitalize[i].length > 3) {
+            result.push(tabCapitalize[i].charAt(0).toUpperCase())
+        } else {
+            result.push(tabCapitalize[i].charAt(0).toLowerCase())
+        }
+        
+        previousWord = tabCapitalize[i];
+        tabCapitalize[i] = tabCapitalize[i].slice(1)
+        result[i] += tabCapitalize[i]
+    }
+    result = result.join(" ");
+    return result;
 }
 
 var checkForSpecialCharacters = function(string) {
-    return 'Write your method here';
+    var result = string.toLowerCase();
+    result= result.split("");
+    var count = 0;
+    for (var i =0; i < result.length; i++) {
+        if(result[i].charCodeAt(0) < 97 || result[i].charCodeAt(0) > 122) {
+           if (result[i].charCodeAt(0) < 48 || result[i].charCodeAt(0) > 57) {
+                count += 1;
+           } else {
+                count = count + 0;
+           };
+        };
+    };
+    return (count > 0);
 }
 
 var squareRoot = function(number) {
