@@ -57,15 +57,21 @@ var reverseWordsInArray = function(array) {
 
 var everyPossiblePair = function(array) {
     var result = [];
-    var pair = [array[array.length-1]];
+    var pair = [];
     for (var i=0; i < array.length; i++) {
         pair.push(array[i]);
-        pair.sort();
-        result.push(pair);
-        pair = [array[i]];
-    }
+        for (var incrPair = 0; incrPair < array.length; incrPair++) {
+             if (array.indexOf(array[incrPair]) > i) {
+                 pair.push(array[incrPair]);
+                 var pairSort = pair.sort();
+                 result.concat(pairSort);
+                 pair.pop();
+             }
+        }
+        pair = [];
+    };
     result.sort();
-    return array;
+    return result;
 }
 
 var allElementsExceptFirstThree = function(array) {
@@ -322,21 +328,41 @@ var checkForSpecialCharacters = function(string) {
 }
 
 var squareRoot = function(number) {
-    return 'Write your method here';
+    number = Math.sqrt(number);
+    
+    return number;
 }
 
 var factorial = function(number) {
-    return 'Write your method here';
+    var result = number;
+    for (var i=1; i < number; i++) {
+        result *=  i;
+    }
+    return result;
 }
 
 var findAnagrams = function(string) {
+    
     return 'Write your method here';
 }
 
 var convertToCelsius = function(number) {
-    return 'Write your method here';
+    number = Math.ceil((number-32)/1.8);
+    return number;
 }
 
 var letterPosition = function(array) {
-    return 'Write your method here';
+    var result=[];
+    var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    for (var i=0; i < array.length; i++) {
+        array[i] = array[i].toLowerCase();
+        for (var incrAlphabet=0; incrAlphabet < alphabet.length; incrAlphabet++) {
+            if (array[i] == alphabet[incrAlphabet]) {
+                result.push(
+                    alphabet.indexOf(alphabet[incrAlphabet])+1
+                );
+            }
+        }
+    }
+    return result;
 }
