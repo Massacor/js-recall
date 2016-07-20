@@ -57,18 +57,16 @@ var reverseWordsInArray = function(array) {
 
 var everyPossiblePair = function(array) {
     var result = [];
-    var pair = [];
-    for (var i=0; i < array.length; i++) {
-        pair.push(array[i]);
-        for (var incrPair = 0; incrPair < array.length; incrPair++) {
+    for (var i=0; i < array.length-1; i++)//le -1 est important car il permet de gérer le cas de figure du dernier de la liste
+    {
+        for (var incrPair = i+1; incrPair < array.length; incrPair++) //le i+1 permet de gérer le fait que ce soit des paires
+        {
              if (array.indexOf(array[incrPair]) > i) {
-                 pair.push(array[incrPair]);
-                 var pairSort = pair.sort();
-                 result.concat(pairSort);
-                 pair.pop();
+                 var pair = [array[i], array[incrPair]];// le fait de lui imposer une nouvelle valeur à chaque tour régle le problème de réinitialisation.
+                 pair.sort();
+                 result.push(pair)
              }
         }
-        pair = [];
     };
     result.sort();
     return result;
@@ -342,8 +340,30 @@ var factorial = function(number) {
 }
 
 var findAnagrams = function(string) {
-    
-    return 'Write your method here';
+    var result = [];
+    var separated= string.split("").sort();
+    var anagram = [];
+    for (var incrNv1=0; incrNv1 < separated.length; incrNv1++) {
+        anagram.push(separated[incrNv1])
+        
+        for (var incrNv2 = 0; incrNv2 < separated.length; incrNv2++) {
+            if (separated[incrNv1] != separated[incrNv2]) {
+                anagram.push(separated[incrNv2]);
+                
+                for (var incrNv3 = 0; incrNv3 < separated.length; incrNv3++) {
+                    if (separated[incrNv1] != separated[incrNv3] && separated[incrNv2] != separated[incrNv3]) {
+                    anagram.push(separated[incrNv3]);
+                    var ready = anagram.join("");
+                    result.push(ready);
+                    anagram.pop();
+                    }
+                }
+            }
+        }
+        anagram=[];
+    }
+    result.sort();
+    return result;
 }
 
 var convertToCelsius = function(number) {
